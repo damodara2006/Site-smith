@@ -1,0 +1,98 @@
+<!-- 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Location Auto-Generate</title>
+  <script>
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+      } else {
+        alert("Geolocation is not supported by this browser.");
+      }
+    }
+
+    function showPosition(position) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+      
+  
+      document.getElementById("locationDisplay").innerHTML = 
+        "Latitude: " + latitude + "<br>Longitude: " + longitude;
+
+      
+    }
+
+    function showError(error) {
+      switch(error.code) {
+        case error.PERMISSION_DENIED:
+          alert("User denied the request for Geolocation.");
+          break;
+        case error.POSITION_UNAVAILABLE:
+          alert("Location information is unavailable.");
+          break;
+        case error.TIMEOUT:
+          alert("The request to get user location timed out.");
+          break;
+        case error.UNKNOWN_ERROR:
+          alert("An unknown error occurred.");
+          break;
+      }
+    }
+  </script>
+</head>
+<body>
+
+<h2>Click the button to get your current location for reporting:</h2>
+
+<button onclick="getLocation()">Report Issue</button>
+
+<p id="locationDisplay"></p>
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <!-- Include SheetJS Library for Excel operations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+</head>
+<body>
+    <h2>Admin Dashboard</h2>
+
+    <!-- Button to download the Excel file after multiple registrations -->
+    <button onclick="downloadExcel()">Download Excel</button>
+
+    <script>
+        // Function to download the Excel file with user data
+        function downloadExcel() {
+            // Retrieve registration data from localStorage
+            let registrationData = JSON.parse(localStorage.getItem("registrationData"));
+
+            if (!registrationData) {
+                alert("No registration data available!");
+                return;
+            }
+
+            // Create a new workbook
+            let workbook = XLSX.utils.book_new();
+
+            // Create a worksheet from the registration data
+            const worksheet = XLSX.utils.aoa_to_sheet(registrationData);
+
+            // Append the worksheet to the workbook
+            XLSX.utils.book_append_sheet(workbook, worksheet, "User Registration Data");
+
+            // Trigger the download of the Excel file
+            XLSX.writeFile(workbook, "UserRegistrationData.xlsx");
+        }
+    </script>
+</body>
+</html>

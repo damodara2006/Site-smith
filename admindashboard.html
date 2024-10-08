@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="shortcut icon" href="./assests/logo.jpeg" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+    </style>
+</head>
+<body class="bg-gray-100 p-6">
+
+    <div class="container mx-auto">
+        <h1 class="text-3xl font-bold mb-6 text-center mt-5 mb-5">Admin Dashboard</h1>
+
+        <!-- Table -->
+        <div class="overflow-x-auto mt-5">
+            <table class="min-w-full bg-white border border-gray-300">
+                <thead class="bg-green-100 text-white-1000 uppercase text-sm leading-normal">
+                    <tr>
+                        <th class="py-3 px-6 text-left  font-bold">S.No</th>
+                        <th class="py-3 px-6 text-left font-bold">Name</th>
+                        <th class="py-3 px-6 text-left font-bold">Report ID</th>
+                        <th class="py-3 px-6 text-left font-bold">Domain</th>
+                        <th class="py-3 px-6 text-center font-bold">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="text-black-600 text-sm font-bold">
+                    <!-- Example row -->
+                
+                    <tr class="border-b border-gray-200 hover:bg-gray-100" class="user1" id="user1">
+                        <td class="py-3 px-6 text-left whitespace-nowrap text-black-1000" >1</td>
+                        <td class="py-3 px-6 text-left" >John Doe</td>
+                        <td class="py-3 px-6 text-left">7896521</td>
+                        <td class="py-3 px-6 text-left">Waste Management</td>
+                        <td class="py-3 px-6 text-center">
+                            <button class="bg-green-500 text-white py-1 px-3 rounded hover:bg-green-600 mr-2">✓</button>
+                            <button class="bg-red-500 text-white py-1 px-3 rounded hover:bg-red-600">X</button>
+                            <button class="bg-green-600 text-white px-3 py-1 mx-5 rounded hover:bg-green-1000 sm:mt-2" onclick="getLocation()">Location</button>
+                            <button class="bg-green-500 text-white py-1 px-3 rounded hover:bg-green-600 mr-2">Photo</button>
+
+                        </td>
+                    </tr>
+            
+
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br>
+    <!-- <p id="locationDisplay"></p> -->
+
+</body>
+<script>
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+      } else {
+        alert("Geolocation is not supported by this browser.");
+      }
+    }
+
+    function showPosition(position) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+      
+      // Display the location
+      // document.getElementById("locationDisplay").innerHTML = "\nLatitude: " + latitude + "\nLongitude: " + longitude;
+      alert("Address Detail\nLatitude: " + latitude + "\nLongitude: " + longitude)
+
+      // You can also send these values to the server for the report
+    }
+
+    function showError(error) {
+      switch(error.code) {
+        case error.PERMISSION_DENIED:
+          alert("User denied the request for Geolocation.");
+          break;
+        case error.POSITION_UNAVAILABLE:
+          alert("Location information is unavailable.");
+          break;
+        case error.TIMEOUT:
+          alert("The request to get user location timed out.");
+          break;
+        case error.UNKNOWN_ERROR:
+          alert("An unknown error occurred.");
+          break;
+      }
+    }
+</script>
+</html>

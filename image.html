@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Image on Button Click</title>
+    <style>
+        #myImage {
+            display: none; /* Initially hide the image */
+            width: 300px;
+            height: auto;
+           
+
+        }
+    </style>
+</head>
+<body>
+    <button id="showButton">Show Image</button>
+    <img id="myImage" src="./assests/improperdrainage.jpg" alt="Displayed Image" class="" popover>
+
+    <script>
+        document.getElementById("showButton").addEventListener("click", function() {
+            var image = document.getElementById("myImage");
+            if (image.style.display === "none") {
+                image.style.display = "block";
+            } else {
+                image.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>

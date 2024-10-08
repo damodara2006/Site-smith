@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Report</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="./assests/logo.jpeg" type="image/x-icon">
+</head>
+<body class="bg-gray-100 mb-20">
+    
+    <!-- Main Container -->
+    <div class="container mx-auto p-8 mt-20">
+        <p class=" text-center rounded-2xl p-2 mb-5 font-bold text-2xl text-green-700">
+            Think Green Live Green 
+        </p>
+        <div class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md">
+            <!-- Title -->
+            <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Submit Your Report</h2>
+            
+            <!-- Image Upload -->
+            <!-- <div class="text-center">
+                <label class="block text-gray-700 text-sm font-bold mb-2 text-center" for="imageUpload">
+                    Upload Image
+                </label>
+                <br><br>
+                
+                <input type="file" id="imageUpload" accept="image/*" style="align-content: center;" class="mx-5 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-green-600 file:text-white hover:file:bg-green-500 justify-center"/>
+            
+            </div> -->
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbTdQ0ra7S-RibQhYh29B11td8QQ1wr3hYoA&s" alt="" class="sg:hidden justify-center lg:px-20 p-5 ml-8 ">
+            <br><br>
+
+            <!-- Submit Button -->
+            <div class="text-center">
+                <button onclick="submitReport()" class="bg-green-600 text-white font-bold py-2 px-4 rounded hover:bg-green-500 focus:outline-none focus:shadow-outline">
+                    Submit Report
+                </button>
+            </div>
+        </div>
+        <p class="bg-red-100 mt-10 text-center rounded-2xl p-2 container mx-auto pl-5 lg:w-96 h-30">
+            <span class="font-bold lg:text" style="color: red; font-weight: 900;">Disclaimer</span><br>
+            <span class="font-bold"> Report is Monitored </span><br>
+            Please provide a Valid Report <br>
+        </p>
+    </div>
+
+    <script>
+        function submitReport() {
+            const imageInput = document.getElementById('imageUpload');
+
+            if (imageInput.files.length === 0) {
+                alert("Please upload an image before submitting the report.");
+            } else {
+                // You can process the report submission here
+                alert("Thank You for Reporting\nThink Green Live Green !");
+            }
+            
+        }
+    </script>
+
+</body>
+</html>

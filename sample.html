@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration Form</title>
+    <!-- Include SheetJS Library for Excel operations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+</head>
+<body>
+    <h2>User Registration Form</h2>
+
+    <!-- Registration Form for multiple users -->
+    <form id="registrationForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" placeholder="Enter Username" required>
+        <br>
+        <label for="email">Email ID:</label>
+        <input type="email" id="email" placeholder="Enter Email" required>
+        <br>
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" placeholder="Enter Phone Number" required>
+        <br>
+        <button type="button" onclick="saveRegistration()">Register</button>
+    </form>
+
+    <script>
+        // Initialize array to store multiple user data with column headers
+        let registrationData = [["Username", "Email ID", "Phone Number"]];  // Column headers
+        let workbook = XLSX.utils.book_new(); // Initialize a new workbook object
+
+        // Function to save the registration data to the array (without downloading)
+        function saveRegistration() {
+            // Get form input values
+            const username = document.getElementById("username").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+
+            // Append the new user data to the registrationData array
+            registrationData.push([username, email, phone]);
+
+            // Create a new worksheet from the updated data
+            const worksheet = XLSX.utils.aoa_to_sheet(registrationData);
+
+            // Clear the workbook before appending new data (ensure it's refreshed with new data)
+            workbook = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(workbook, worksheet, "User Registration Data");
+
+            // Clear the form after submission for the next registration
+            document.getElementById("registrationForm").reset();
+        }
+
+        // Store workbook and registration data in localStorage to access from admin page
+        function saveDataToLocalStorage() {
+            localStorage.setItem("registrationData", JSON.stringify(registrationData));
+        }
+
+        // Save data to localStorage on every registration
+        window.addEventListener("beforeunload", saveDataToLocalStorage);
+    </script>
+</body>
+</html>

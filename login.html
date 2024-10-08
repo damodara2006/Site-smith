@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="./assests/Logo maker project (6) (1) (1).png" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log In</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+</head>
+<style>
+    /*Log In Style (completed) */
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+section {
+    position: relative;
+    min-height: 100vh;
+    /* background-color: #003366; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+
+}
+
+section .container1 {
+    position: relative;
+    width: 800px;
+    height: 500px;
+    background: rgb(0, 128, 0,0.02);
+    /* box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1); */
+    overflow: hidden;
+    align-items: center;
+    border-radius: 2rem;
+    box-shadow: 0 0 10px rgb(0, 128, 0,0.02);
+    ;
+}
+
+section .container1 .user {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    /* background-color: #003366; */
+}
+
+
+
+section .container1 .user .formBx {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    background: rgb(0, 128, 0,0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    transition: 0.5s;
+    /* border-radius: 2rem; */
+
+}
+
+section .container1 .user .formBx form h2 {
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+section .container1 .user .formBx form input {
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    background: #ffffff;
+    color: black;
+    outline: none;
+    margin: 8px 0;
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-weight: 300;
+
+}
+
+section .container1 .user .formBx form input[type='submit'] {
+    max-width: 100px;
+    background: #677eff;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: 0.5s;
+}
+
+section .container1 .user .formBx form .signup {
+    position: relative;
+    margin-top: 20px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #555;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+section .container1 .user .formBx form .signup a {
+    font-weight: 600;
+    text-decoration: none;
+    color: #677eff;
+}
+
+section .container1 .signupBx {
+    pointer-events: none;
+}
+
+section .container1.active .signupBx {
+    pointer-events: initial;
+}
+
+section .container1 .signupBx .formBx {
+    left: 100%;
+}
+
+section .container1.active .signupBx .formBx {
+    left: 0;
+}
+
+section .container1 .signupBx .imgBx {
+    left: -100%;
+}
+
+section .container1.active .signupBx .imgBx {
+    left: 0%;
+}
+
+section .container1 .signinBx .formBx {
+    left: 0%;
+}
+
+section .container1.active .signinBx .formBx {
+    left: 100%;
+}
+
+
+
+section .container1.active .signinBx .imgBx {
+    left: -100%;
+}
+
+@media (max-width: 991px) {
+    section .container {
+        max-width: 400px;
+    }
+
+    section .container1 .imgBx {
+        display: none;
+    }
+
+    section .container1 .user .formBx {
+        width: 100%;
+    }
+}
+
+section .container1 .user .imgBx {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    background: #ff0;
+    transition: 0.5s;
+}
+
+section .container1 .user .imgBx img {
+    position: absolute;
+    top: 0;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+small {
+    color: red;
+    visibility: hidden;
+}
+
+.error input {
+    border-color: red;
+}
+
+.error small {
+    visibility: visible;
+}
+
+.success input {
+    border-color: green;
+    color: black;
+}
+
+</style>
+
+<body class="bg-green-100">
+  <section >
+    <div class="container1">
+      <div class="user signinBx">
+        <div class="imgBx"><img src="./assests/thinkgreen3.jpg" alt="singup" /></div>
+        <div class="formBx">
+          <form action="" onsubmit="return false;" id="loginForm">
+            <h2>Sign In</h2>
+            <div class="form-group">
+              <input type="text" placeholder="Username" id="username">
+              <small>Error Message</small>
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Password" id="password">
+              <small>Error Message</small>
+            </div>
+            <input type="submit" class="log_btn" value="Login" style="background-color: green; color: white;">
+            <p class="signup">
+              Don't have an account?
+              <a href="#" onclick="toggleForm();" >Sign Up.</a>
+            </p>
+
+            
+          </form>
+        </div>
+      </div>
+      <div class="user signupBx">
+        <div class="formBx">
+          <form action="" onsubmit="return false;">
+            <h2>Create an account</h2>
+            <input type="text" placeholder="Username" required>
+            <input type="email" placeholder="Email Address" required>
+            <input type="password" placeholder="Create Password" required>
+            <input type="password" placeholder="Confirm Password" required>
+            <input type="submit" value="Sign up" style="background-color: green; color: white;">
+            <p class="signup">
+              Already have an account?
+              <a href="#" onclick="toggleForm();" >Sign in.</a>
+            </p>
+          </form>
+        </div>
+        <div class="imgBx"><img src="./assests/gogreen.jpg" alt=""></div>
+      </div>
+    </div>
+  </section>
+  <script >
+    const toggleForm = () => {
+    const container = document.querySelector('.container1');
+    container.classList.toggle('active');
+};
+
+
+
+document.getElementById("loginForm").addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const un = document.getElementById('username');
+    const pa = document.getElementById('password');
+
+    if (!un || !pa) {
+        console.error("Username or Password element not found!");
+        return;
+    }
+
+    const unv = un.value.trim();
+    const pav = pa.value.trim();
+
+    if (unv === '') {
+        setError(un, "User Name cannot be Empty!");
+    } else {
+        setSuccess(un);
+    }
+
+    if (pav === '') {
+        setError(pa, "Password cannot be Empty!");
+    } else {
+        setSuccess(pa);
+    }
+
+    if (unv !== '' && pav !== '') {
+        setLogin(un, pa, "Login successful!");
+    }
+});
+
+function setError(element, message) {
+    const formGroup = element.parentElement;
+    if (!formGroup) {
+        console.error("Form group not found for element:", element);
+        return;
+    }
+    formGroup.className = "form-group error";
+    const small = formGroup.querySelector('small');
+    if (small) {
+        small.innerText = message;
+    } else {
+        console.error("Small element not found in form group:", formGroup);
+    }
+}
+
+function setSuccess(element) {
+    const formGroup = element.parentElement;
+    if (!formGroup) {
+        console.error("Form group not found for element:", element);
+        return;
+    }
+    formGroup.className = "form-group success";
+}
+
+
+function setLogin(element, element1, message) {
+    const formGroup = element.parentElement;
+    const form = element1.parentElement;
+
+    if (!formGroup) {
+        console.error("Form group not found for element:", element);
+        return;
+    }
+
+    if (!form) {
+        console.error("Form group not found for element1:", element1);
+        return;
+    }
+
+    formGroup.className = "form-group success";
+    form.className = "form-group success";
+
+    const small = formGroup.querySelector('small');
+    const small2 = form.querySelector('small');
+
+    if (small && small2) {
+        small.innerText = message;
+        small2.innerText = message;
+        window.location.href = "./dashboard.html";
+    } else {
+        console.error("Small element not found in form group:", formGroup);
+    }
+}
+
+  </script>
+</body>
+
+</html>
